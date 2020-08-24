@@ -1,0 +1,56 @@
+{
+  "name": "react-native-typescript-library-starter",
+  "version": "0.1.0",
+  "description": "Extremely easy to create a React Native Component Library with both Stateful and Functional Component Examples.",
+  "main": "./build/dist/index.js",
+  "repository": "git@github.com:WrathChaos/react-native-typescript-library-starter.git",
+  "author": "FreakyCoder <kurayogun@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://www.freakycoder.com",
+  "bugs": "https://github.com/WrathChaos/react-native-typescript-library-starter/issues",
+  "keywords": [
+    "FreakyCoder",
+    "freakycoder",
+    "kuray",
+    "Kuray",
+    "react",
+    "react-native",
+    "javascript",
+    "ui-lib",
+    "rn"
+  ],
+  "scripts": {
+    "build": "cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "peerDependencies": {
+    "react": ">= 16.x.x",
+    "react-native": ">= 0.55.x"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.22",
+    "@types/react-native": "^0.63.0",
+    "react-native-typescript-transformer": "^1.2.13",
+    "typescript": "^3.7.4",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "eslint src/*.js --fix-dry-run"
+    ]
+  }
+}
