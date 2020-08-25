@@ -1,7 +1,8 @@
 import React from "react";
 import { StatusBar, FlatList, Dimensions } from "react-native";
-import ProgressiveFastImage from "./build/dist/ProgressiveFastImage";
+import ProgressiveFastImage from "@freakycoder/react-native-progressive-fast-image";
 const { width: ScreenWidth } = Dimensions.get("window");
+console.disableYellowBox = true;
 
 const images = [
   {
@@ -76,6 +77,7 @@ const App = () => {
 
     return (
       <ProgressiveFastImage
+        key={item}
         style={{
           width: ScreenWidth / 2,
           height: ScreenWidth / 2,
