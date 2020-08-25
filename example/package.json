@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@freakycoder/react-native-progressive-fast-image": "^0.1.0",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-fast-image": "^8.3.2"

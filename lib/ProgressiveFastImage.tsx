@@ -38,6 +38,18 @@ class ProgressiveImage extends React.Component<IProps, IState> {
     }).start();
   };
 
+  // ? Fixing FastImage library's `source` null bug
+  normalisedSource = () => {
+    const { source } = this.props;
+    const normalisedSource =
+      source && typeof source.uri === "string" && !source.uri.split("http")[1]
+        ? null
+        : source;
+    return this.props.source && this.props.source.uri
+      ? normalisedSource
+      : source;
+  };
+
   render() {
     const { thumbnailSource, source, style, ...props } = this.props;
 
@@ -52,7 +64,7 @@ class ProgressiveImage extends React.Component<IProps, IState> {
         />
         <AnimatedFastImage
           {...props}
-          source={source}
+          source={this.normalisedSource()}
           onLoad={this.onImageLoad}
           style={[styles.imageStyle, { opacity: this.animatedImage }, style]}
         />

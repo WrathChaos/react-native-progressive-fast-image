@@ -1,6 +1,6 @@
 {
   "name": "@freakycoder/react-native-progressive-fast-image",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Customizable progressive image for React Native with FastImage",
   "main": "./build/dist/ProgressiveFastImage.js",
   "repository": "git@github.com:WrathChaos/react-native-progressive-fast-image.git",
