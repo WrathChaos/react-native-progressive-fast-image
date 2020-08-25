@@ -62,6 +62,15 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 - [x] ~~LICENSE~~
 - [ ] Write an article about the lib on Medium
 
+## Better with built-in bug fix
+
+**Fixes** FastImage's `source null bug`.
+
+- https://github.com/DylanVann/react-native-fast-image/issues/623
+- https://github.com/DylanVann/react-native-fast-image/issues/27
+- https://github.com/DylanVann/react-native-fast-image/issues/484
+- https://github.com/DylanVann/react-native-fast-image/issues/96
+
 ## Author
 
 FreakyCoder, kurayogun@gmail.com
