@@ -64,7 +64,7 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 
 ## Better with built-in bug fix
 
-**Fixes** FastImage's `source null bug`.
+**Fixes** FastImage's `source null` bug-fix.
 
 - https://github.com/DylanVann/react-native-fast-image/issues/623
 - https://github.com/DylanVann/react-native-fast-image/issues/27
