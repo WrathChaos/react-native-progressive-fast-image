@@ -60,6 +60,7 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 ## Future Plans
 
 - [x] ~~LICENSE~~
+- [ ] Built-in Loading Indicator
 - [ ] Write an article about the lib on Medium
 
 ## Better with built-in bug fix
