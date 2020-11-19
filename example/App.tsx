@@ -1,6 +1,7 @@
 import React from "react";
 import { StatusBar, FlatList, Dimensions } from "react-native";
-import ProgressiveFastImage from "@freakycoder/react-native-progressive-fast-image";
+// import ProgressiveFastImage from "@freakycoder/react-native-progressive-fast-image";
+import ProgressiveImage from "./lib/ProgressiveFastImage";
 const { width: ScreenWidth } = Dimensions.get("window");
 console.disableYellowBox = true;
 
@@ -76,14 +77,15 @@ const App = () => {
     const { item, index } = data;
 
     return (
-      <ProgressiveFastImage
+      <ProgressiveImage
         key={item}
         style={{
           width: ScreenWidth / 2,
           height: ScreenWidth / 2,
         }}
         source={item}
-        thumbnailSource={item}
+        // thumbnailSource={item}
+        loadingSource={require("./loading.gif")}
       />
     );
   };
