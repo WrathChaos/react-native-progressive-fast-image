@@ -84,8 +84,13 @@ const App = () => {
           height: ScreenWidth / 2,
         }}
         source={item}
-        // thumbnailSource={item}
-        loadingSource={require("./loading.gif")}
+        thumbnailSource={item}
+        loadingImageStyle={{
+          width: 50,
+          height: 50,
+          alignSelf: "center",
+        }}
+        // loadingSource={require("./assets/loading3.gif")}
       />
     );
   };
