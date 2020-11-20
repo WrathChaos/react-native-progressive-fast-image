@@ -1,44 +1,92 @@
 import * as React from "react";
-import { View, Animated } from "react-native";
-import FastImage from "react-native-fast-image";
+import {
+  View,
+  Animated,
+  ImageSourcePropType,
+  StyleProp,
+  ImageStyle,
+} from "react-native";
+import FastImage, {
+  ImageStyle as FastImageStyle,
+  Source,
+} from "react-native-fast-image";
 const AnimatedFastImage = Animated.createAnimatedComponent(FastImage);
 /**
  * ? Local Imports
  */
 import styles from "./ProgressiveFastImage.style";
 
+export type CustomImageStyleProp =
+  | StyleProp<ImageStyle>
+  | Array<StyleProp<ImageStyle>>;
+
+export type CustomFastImageStyleProps =
+  | StyleProp<FastImageStyle>
+  | Array<StyleProp<FastImageStyle>>;
+
 interface IProps {
-  style?: any;
-  source: any;
-  thumbnailSource: any;
+  source: Source;
+  errorSource?: Source;
+  loadingSource?: ImageSourcePropType;
+  thumbnailSource?: ImageSourcePropType;
+  style?: CustomFastImageStyleProps;
+  loadingImageStyle?: CustomFastImageStyleProps;
+  thumbnailAnimationDuration?: number;
+  imageAnimationDuration?: number;
   useNativeDriver?: boolean;
 }
 
-interface IState {}
+interface IState {
+  imageLoaded: boolean;
+  error: boolean;
+  showDefault: boolean;
+}
 
 class ProgressiveImage extends React.Component<IProps, IState> {
   animatedImage = new Animated.Value(0);
   animatedThumbnailImage = new Animated.Value(0);
+  animatedLoadingImage = new Animated.Value(1);
 
   public static defaultProps = {
     useNativeDriver: true,
   };
 
+  constructor(props: IProps) {
+    super(props);
+    this.state = { showDefault: true, error: false, imageLoaded: false };
+  }
+
   onThumbnailLoad = () => {
-    Animated.timing(this.animatedThumbnailImage, {
-      toValue: 1,
+    Animated.timing(this.animatedLoadingImage, {
+      toValue: 0,
       useNativeDriver: this.props.useNativeDriver || true,
-    }).start();
+    }).start(() => {
+      Animated.timing(this.animatedThumbnailImage, {
+        toValue: 1,
+        duration: this.props.thumbnailAnimationDuration,
+        useNativeDriver: this.props.useNativeDriver || true,
+      }).start();
+    });
   };
 
   onImageLoad = () => {
+    this.setState({ imageLoaded: false });
     Animated.timing(this.animatedImage, {
       toValue: 1,
+      duration: this.props.imageAnimationDuration,
       useNativeDriver: this.props.useNativeDriver || true,
     }).start();
   };
 
-  // ? Fixing FastImage library's `source` null bug
+  onLoadEnd = () => {
+    this.setState({ showDefault: false });
+  };
+
+  onError = () => {
+    this.setState({ error: true });
+  };
+
+  // ? bugfix: FastImage library's `source` null
   normalisedSource = () => {
     const { source } = this.props;
     const normalisedSource =
@@ -50,23 +98,69 @@ class ProgressiveImage extends React.Component<IProps, IState> {
       : source;
   };
 
+  statedSource = () => {
+    const { error } = this.state;
+    const { loadingSource, errorSource } = this.props;
+    if (!loadingSource) {
+      return error ? errorSource : this.normalisedSource();
+    }
+    if (!errorSource) return this.normalisedSource();
+    return error
+      ? errorSource // ? Error Image
+      : this.normalisedSource();
+  };
+
   render() {
-    const { thumbnailSource, source, style, ...props } = this.props;
+    const {
+      style,
+      source,
+      loadingSource,
+      thumbnailSource,
+      loadingImageStyle = this.props.style,
+      ...props
+    } = this.props;
 
     return (
       <View style={styles.container}>
+        {loadingSource && !this.state.imageLoaded && (
+          <View
+            style={[
+              {
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                position: "absolute",
+                alignItems: "center",
+                alignSelf: "center",
+                justifyContent: "center",
+              },
+              style,
+            ]}
+          >
+            <AnimatedFastImage
+              resizeMode="contain"
+              style={[
+                { opacity: this.animatedLoadingImage },
+                loadingImageStyle,
+              ]}
+              source={this.props.loadingSource}
+            />
+          </View>
+        )}
         <Animated.Image
-          {...props}
-          blurRadius={1}
+          blurRadius={15}
           source={thumbnailSource}
           onLoad={this.onThumbnailLoad}
           style={[{ opacity: this.animatedThumbnailImage }, style]}
         />
         <AnimatedFastImage
           {...props}
-          source={this.normalisedSource()}
+          onError={this.onError}
           onLoad={this.onImageLoad}
+          onLoadEnd={this.onLoadEnd}
           style={[styles.imageStyle, { opacity: this.animatedImage }, style]}
+          source={this.statedSource()}
         />
       </View>
     );

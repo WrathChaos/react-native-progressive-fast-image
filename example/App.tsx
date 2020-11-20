@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar, FlatList, Dimensions } from "react-native";
 // import ProgressiveFastImage from "@freakycoder/react-native-progressive-fast-image";
-import ProgressiveImage from "./lib/ProgressiveFastImage";
+import ProgressiveImage from "./build/dist/ProgressiveFastImage";
 const { width: ScreenWidth } = Dimensions.get("window");
 console.disableYellowBox = true;
 
@@ -90,7 +90,8 @@ const App = () => {
           height: 50,
           alignSelf: "center",
         }}
-        // loadingSource={require("./assets/loading3.gif")}
+        imageAnimationDuration={10000}
+        loadingSource={require("./assets/loading3.gif")}
       />
     );
   };

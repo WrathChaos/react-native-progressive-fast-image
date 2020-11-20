@@ -1,13 +1,14 @@
-import { ViewStyle, ImageStyle, StyleSheet } from "react-native";
+import { ViewStyle, StyleSheet } from "react-native";
+import { ImageStyle as FastImageStyle } from "react-native-fast-image";
 
 interface Style {
   container: ViewStyle;
-  imageStyle: ImageStyle;
+  imageStyle: FastImageStyle;
 }
 
 export default StyleSheet.create<Style>({
   container: {
-    backgroundColor: "#e1e4e8",
+    backgroundColor: "transparent",
   },
   imageStyle: {
     top: 0,
