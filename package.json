@@ -9,6 +9,8 @@
   "homepage": "https://www.freakycoder.com",
   "bugs": "https://github.com/WrathChaos/react-native-progressive-fast-image/issues",
   "keywords": [
+    "loading",
+    "loading-image",
     "progressive",
     "lazy",
     "lazy-load",
