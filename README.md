@@ -10,10 +10,26 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
-<p align="center">
-  <img alt="React Native Progressive Fast Image"
+<table>
+  <tr>
+    <td>
+      <b>Progressive Fast Image</b>
+    </td>
+    <td>
+      <b>Built-in Loading Progressive Fast Image</b>
+    </td>
+  </tr>
+ <tr>
+    <td align="center"> 
+       <img alt="React Native Progressive Fast Image"
         src="assets/Screenshots/React-Native-Progressive-Fast-Image.gif" />
-</p>
+    </td>
+    <td align="center">
+       <img alt="React Native Progressive Fast Image"
+        src="assets/Screenshots/React-Native-Progressive-Fast-Image-Loading.gif" />
+    </td>
+   </tr>
+</table>
 
 # Installation
 
@@ -52,15 +68,30 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 
 # Configuration - Props
 
-| Property        | Type  |  Default  | Description                           |
-| --------------- | :---: | :-------: | ------------------------------------- |
-| source          | image | undefined | set the main source of the image      |
-| thumbnailSource | image | undefined | set the thumbnail source of the image |
+useNativeDriver?: boolean;
+
+| Property        |        Type         |  Default  | Description                           |
+| --------------- | :-----------------: | :-------: | ------------------------------------- |
+| source          |       Source        | undefined | set the main source of the image      |
+| thumbnailSource | ImageSourcePropType | undefined | set the thumbnail source of the image |
+| loadingSource   | ImageSourcePropType | undefined | set the error source of the image     |
+| errorSource     | ImageSourcePropType | undefined | set the loading source of the image   |
+
+## Customization Props
+
+| Property                   |  Type   | Default | Description                                 |
+| -------------------------- | :-----: | :-----: | ------------------------------------------- |
+| style                      |  style  | default | change or override main image style         |
+| loadingImageStyle          |  style  | default | change or override loading image style      |
+| thumbnailAnimationDuration | number  | default | change the thumbnail animation's duration   |
+| imageAnimationDuration     | number  | default | change the main image animation's duration  |
+| useNativeDriver            | boolean |  true   | change the animations useNativeDriver value |
 
 ## Future Plans
 
 - [x] ~~LICENSE~~
-- [ ] Built-in Loading Indicator
+- [x] ~~Built-in Loading Indicator~~
+- [x] ~~Built-in Error Image Source~~
 - [ ] Write an article about the lib on Medium
 
 ## Better with built-in bug fix
