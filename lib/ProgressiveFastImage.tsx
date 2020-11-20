@@ -123,21 +123,7 @@ class ProgressiveImage extends React.Component<IProps, IState> {
     return (
       <View style={styles.container}>
         {loadingSource && !this.state.imageLoaded && (
-          <View
-            style={[
-              {
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                position: "absolute",
-                alignItems: "center",
-                alignSelf: "center",
-                justifyContent: "center",
-              },
-              style,
-            ]}
-          >
+          <View style={[styles.loadingImageStyle, style]}>
             <AnimatedFastImage
               resizeMode="contain"
               style={[
