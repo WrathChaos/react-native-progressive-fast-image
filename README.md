@@ -20,7 +20,7 @@
     </td>
   </tr>
  <tr>
-    <td align="center"> 
+    <td align="center">
        <img alt="React Native Progressive Fast Image"
         src="assets/Screenshots/React-Native-Progressive-Fast-Image.gif" />
     </td>
@@ -70,12 +70,30 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 
 useNativeDriver?: boolean;
 
-| Property        |        Type         |  Default  | Description                           |
-| --------------- | :-----------------: | :-------: | ------------------------------------- |
-| source          |       Source        | undefined | set the main source of the image      |
-| thumbnailSource | ImageSourcePropType | undefined | set the thumbnail source of the image |
-| loadingSource   | ImageSourcePropType | undefined | set the error source of the image     |
-| errorSource     | ImageSourcePropType | undefined | set the loading source of the image   |
+| Property              |        Type         |  Default  | Description                           |
+| --------------------- | :-----------------: | :-------: | ------------------------------------- |
+| source                |       Source        | undefined | set the main source of the image      |
+| thumbnailSource       | ImageSourcePropType | undefined | set the thumbnail source of the image |
+| loadingSource         | ImageSourcePropType | undefined | set the error source of the image     |
+| errorSource           | ImageSourcePropType | undefined | set the loading source of the image   |
+| loadingImageComponent |      Component      |  default  | WARNING: Read the below!              |
+
+### `loadingImageComponent` Usage
+
+If you want to set your own component for the loading image, you should set this **style** for the top of the component
+
+```javascript
+{
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  position: "absolute",
+  alignItems: "center",
+  alignSelf: "center",
+  justifyContent: "center",
+}
+```
 
 ## Customization Props
 
@@ -98,10 +116,10 @@ useNativeDriver?: boolean;
 
 **Fixes** FastImage's `source null` bug-fix.
 
-- https://github.com/DylanVann/react-native-fast-image/issues/623
-- https://github.com/DylanVann/react-native-fast-image/issues/27
-- https://github.com/DylanVann/react-native-fast-image/issues/484
-- https://github.com/DylanVann/react-native-fast-image/issues/96
+- <https://github.com/DylanVann/react-native-fast-image/issues/623>
+- <https://github.com/DylanVann/react-native-fast-image/issues/27>
+- <https://github.com/DylanVann/react-native-fast-image/issues/484>
+- <https://github.com/DylanVann/react-native-fast-image/issues/96>
 
 ## Author
 
@@ -110,3 +128,7 @@ FreakyCoder, kurayogun@gmail.com
 ## License
 
 React Native Progressive Fast Image is available under the MIT license. See the LICENSE file for more info.
+
+```
+
+```

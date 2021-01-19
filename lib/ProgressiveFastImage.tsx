@@ -24,7 +24,9 @@ export type CustomFastImageStyleProps =
   | StyleProp<FastImageStyle>
   | Array<StyleProp<FastImageStyle>>;
 
+  
 interface IProps {
+  loadingImageComponent?: React.ReactNode;
   source: Source;
   errorSource?: Source;
   loadingSource?: ImageSourcePropType;
@@ -116,13 +118,14 @@ class ProgressiveImage extends React.Component<IProps, IState> {
       source,
       loadingSource,
       thumbnailSource,
+      loadingImageComponent,
       loadingImageStyle = this.props.style,
       ...props
     } = this.props;
 
     return (
       <View style={styles.container}>
-        {loadingSource && !this.state.imageLoaded && (
+        {loadingImageComponent || loadingSource && !this.state.imageLoaded && (
           <View style={[styles.loadingImageStyle, style]}>
             <AnimatedFastImage
               resizeMode="contain"
