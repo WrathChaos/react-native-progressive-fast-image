@@ -1,7 +1,6 @@
 import React from 'react';
 import {StatusBar, FlatList, Dimensions} from 'react-native';
-// import ProgressiveImage from "@freakycoder/react-native-progressive-fast-image";
-import ProgressiveImage from './build/dist/ProgressiveFastImage';
+import ProgressiveImage from '@freakycoder/react-native-progressive-fast-image';
 const {width: ScreenWidth} = Dimensions.get('window');
 console.disableYellowBox = true;
 
