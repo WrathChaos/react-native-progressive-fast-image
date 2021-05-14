@@ -24,10 +24,10 @@ export type CustomFastImageStyleProps =
   | StyleProp<FastImageStyle>
   | Array<StyleProp<FastImageStyle>>;
 
-  
-interface IProps {
+export interface IProgressiveFastImageProps {
   loadingImageComponent?: React.ReactNode;
   source: Source;
+  blurRadius: number;
   errorSource?: Source;
   loadingSource?: ImageSourcePropType;
   thumbnailSource?: ImageSourcePropType;
@@ -44,18 +44,21 @@ interface IState {
   showDefault: boolean;
 }
 
-class ProgressiveImage extends React.Component<IProps, IState> {
+class ProgressiveImage extends React.Component<
+  IProgressiveFastImageProps,
+  IState
+> {
   animatedImage = new Animated.Value(0);
   animatedThumbnailImage = new Animated.Value(0);
   animatedLoadingImage = new Animated.Value(1);
 
-  public static defaultProps = {
-    useNativeDriver: true,
-  };
-
-  constructor(props: IProps) {
+  constructor(props: IProgressiveFastImageProps) {
     super(props);
-    this.state = { showDefault: true, error: false, imageLoaded: false };
+    this.state = {
+      error: false,
+      showDefault: true,
+      imageLoaded: false,
+    };
   }
 
   onThumbnailLoad = () => {
@@ -119,26 +122,28 @@ class ProgressiveImage extends React.Component<IProps, IState> {
       loadingSource,
       thumbnailSource,
       loadingImageComponent,
-      loadingImageStyle = this.props.style,
+      blurRadius = 15,
+      loadingImageStyle,
       ...props
     } = this.props;
 
     return (
       <View style={styles.container}>
-        {loadingImageComponent || loadingSource && !this.state.imageLoaded && (
-          <View style={[styles.loadingImageStyle, style]}>
-            <AnimatedFastImage
-              resizeMode="contain"
-              style={[
-                { opacity: this.animatedLoadingImage },
-                loadingImageStyle,
-              ]}
-              source={this.props.loadingSource}
-            />
-          </View>
-        )}
+        {loadingImageComponent ||
+          (loadingSource && !this.state.imageLoaded && (
+            <View style={[styles.loadingImageStyle, style]}>
+              <AnimatedFastImage
+                resizeMode="contain"
+                style={[
+                  { opacity: this.animatedLoadingImage },
+                  loadingImageStyle,
+                ]}
+                source={this.props.loadingSource}
+              />
+            </View>
+          ))}
         <Animated.Image
-          blurRadius={15}
+          blurRadius={blurRadius}
           source={thumbnailSource}
           onLoad={this.onThumbnailLoad}
           style={[{ opacity: this.animatedThumbnailImage }, style]}

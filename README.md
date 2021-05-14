@@ -77,6 +77,7 @@ useNativeDriver?: boolean;
 | loadingSource         | ImageSourcePropType | undefined | set the error source of the image     |
 | errorSource           | ImageSourcePropType | undefined | set the loading source of the image   |
 | loadingImageComponent |      Component      |  default  | WARNING: Read the below!              |
+| blurRadius            |       number        |    15     | change the blur radius level          |
 
 ### `loadingImageComponent` Usage
 

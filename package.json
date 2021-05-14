@@ -1,6 +1,6 @@
 {
   "name": "@freakycoder/react-native-progressive-fast-image",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "Customizable progressive image for React Native with FastImage",
   "main": "./build/dist/ProgressiveFastImage.js",
   "repository": "git@github.com:WrathChaos/react-native-progressive-fast-image.git",
@@ -37,20 +37,19 @@
   },
   "peerDependencies": {
     "react": ">= 16.x.x",
-    "react-native": ">= 0.55.x",
-    "react-native-fast-image": ">= 8.3.2"
+    "react-native": ">=0.63.x"
   },
   "devDependencies": {
-    "@types/react": "^16.9.22",
-    "@types/react-native": "^0.63.0",
+    "@types/react": "^16.9.53",
+    "@types/react-native": "^0.63.25",
     "react-native-typescript-transformer": "^1.2.13",
-    "typescript": "^3.7.4",
-    "@react-native-community/eslint-config": "^0.0.5",
-    "eslint": "^6.8.0",
+    "typescript": "^4.0.3",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.2",
+    "prettier": "^2.1.2"
   },
   "husky": {
     "hooks": {
@@ -64,6 +63,6 @@
     ]
   },
   "dependencies": {
-    "react-native-fast-image": "^8.3.2"
+    "react-native-fast-image": ">= 8.3.2"
   }
 }
