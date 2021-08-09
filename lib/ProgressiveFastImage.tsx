@@ -27,7 +27,7 @@ export type CustomFastImageStyleProps =
 export interface IProgressiveFastImageProps {
   loadingImageComponent?: React.ReactNode;
   source: Source;
-  blurRadius: number;
+  blurRadius?: number;
   errorSource?: Source;
   loadingSource?: ImageSourcePropType;
   thumbnailSource?: ImageSourcePropType;
