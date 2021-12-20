@@ -70,14 +70,15 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 
 useNativeDriver?: boolean;
 
-| Property              |        Type         |  Default  | Description                           |
-| --------------------- | :-----------------: | :-------: | ------------------------------------- |
-| source                |       Source        | undefined | set the main source of the image      |
-| thumbnailSource       | ImageSourcePropType | undefined | set the thumbnail source of the image |
-| loadingSource         | ImageSourcePropType | undefined | set the error source of the image     |
-| errorSource           | ImageSourcePropType | undefined | set the loading source of the image   |
-| loadingImageComponent |      Component      |  default  | WARNING: Read the below!              |
-| blurRadius            |       number        |    15     | change the blur radius level          |
+| Property              |        Type               |  Default                  | Description                           |
+| --------------------- | :-----------------:       | :-------:                 | ------------------------------------- |
+| source                |       Source              | undefined                 | set the main source of the image      |
+| thumbnailSource       | ImageSourcePropType       | undefined                 | set the thumbnail source of the image |
+| loadingSource         | ImageSourcePropType       | undefined                 | set the error source of the image     |
+| errorSource           | ImageSourcePropType       | undefined                 | set the loading source of the image   |
+| loadingImageComponent |      Component            |  default                  | WARNING: Read the below!              |
+| blurRadius            |       number              |    15                     | change the blur radius level          |
+| resizeMode            |FastImageResizeModePropType| FastImage.resizeMode.cover| change the resize mode of the image   |
 
 ### `loadingImageComponent` Usage
 
