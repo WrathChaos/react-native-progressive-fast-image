@@ -9,6 +9,7 @@ import {
 import FastImage, {
   ImageStyle as FastImageStyle,
   Source,
+  ResizeMode
 } from "react-native-fast-image";
 const AnimatedFastImage = Animated.createAnimatedComponent(FastImage);
 /**
@@ -36,6 +37,7 @@ export interface IProgressiveFastImageProps {
   thumbnailAnimationDuration?: number;
   imageAnimationDuration?: number;
   useNativeDriver?: boolean;
+  resizeMode?: ResizeMode;
 }
 
 interface IState {
@@ -124,6 +126,7 @@ class ProgressiveImage extends React.Component<
       loadingImageComponent,
       blurRadius = 15,
       loadingImageStyle,
+      resizeMode
       ...props
     } = this.props;
 
@@ -155,6 +158,7 @@ class ProgressiveImage extends React.Component<
           onLoadEnd={this.onLoadEnd}
           style={[styles.imageStyle, { opacity: this.animatedImage }, style]}
           source={this.statedSource()}
+          resizeMode={resizeMode ? resizeMode : FastImage.resizeMode.cover}
         />
       </View>
     );
