@@ -36,6 +36,7 @@ export interface IProgressiveFastImageProps {
   thumbnailAnimationDuration?: number;
   imageAnimationDuration?: number;
   useNativeDriver?: boolean;
+  resize?:boolean;
 }
 
 interface IState {
@@ -124,6 +125,7 @@ class ProgressiveImage extends React.Component<
       loadingImageComponent,
       blurRadius = 15,
       loadingImageStyle,
+      resize,
       ...props
     } = this.props;
 
@@ -155,6 +157,7 @@ class ProgressiveImage extends React.Component<
           onLoadEnd={this.onLoadEnd}
           style={[styles.imageStyle, { opacity: this.animatedImage }, style]}
           source={this.statedSource()}
+          resizeMode={resize ? FastImage.resizeMode.contain : FastImage.resizeMode.cover}
         />
       </View>
     );
