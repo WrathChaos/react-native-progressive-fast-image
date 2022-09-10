@@ -36,6 +36,7 @@ export interface IProgressiveFastImageProps {
   thumbnailAnimationDuration?: number;
   imageAnimationDuration?: number;
   useNativeDriver?: boolean;
+  props?: FastImageProps
 }
 
 interface IState {
