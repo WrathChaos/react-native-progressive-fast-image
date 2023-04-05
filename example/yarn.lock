@@ -1099,12 +1099,12 @@
   "resolved" "https://registry.npmjs.org/@eslint/js/-/js-8.37.0.tgz"
   "version" "8.37.0"
 
-"@freakycoder/react-native-progressive-fast-image@^0.2.5":
-  "integrity" "sha512-UEJfY1JS70og5XqFd7P24ZhOdrWqvW22iJ1UMfqNllJpb/of/CWbDS/8zVfZMEG9pNGffN8FsSYApLoYMIfZpA=="
-  "resolved" "https://registry.npmjs.org/@freakycoder/react-native-progressive-fast-image/-/react-native-progressive-fast-image-0.2.5.tgz"
-  "version" "0.2.5"
+"@freakycoder/react-native-progressive-fast-image@1.0.0":
+  "integrity" "sha512-vnrujScN0atJISBv2djZ2UFcVemLu6RPDGCov1N/j0uNVxis0/NNHSEWhD7dpOxTlhEE8aHyEgInt4b6r+Cj7g=="
+  "resolved" "https://registry.npmjs.org/@freakycoder/react-native-progressive-fast-image/-/react-native-progressive-fast-image-1.0.0.tgz"
+  "version" "1.0.0"
   dependencies:
-    "react-native-fast-image" ">= 8.3.2"
+    "react-native-fast-image" ">= 8.3.6"
 
 "@hapi/hoek@^9.0.0":
   "integrity" "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
@@ -5801,7 +5801,7 @@
     "jscodeshift" "^0.13.1"
     "nullthrows" "^1.1.1"
 
-"react-native-fast-image@^8.6.3", "react-native-fast-image@>= 8.3.2":
+"react-native-fast-image@^8.6.3", "react-native-fast-image@>= 8.3.6":
   "integrity" "sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg=="
   "resolved" "https://registry.npmjs.org/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz"
   "version" "8.6.3"
@@ -5811,7 +5811,7 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.17.tgz"
   "version" "0.71.17"
 
-"react-native@>=0.60.0", "react-native@>=0.63.x", "react-native@0.71.6":
+"react-native@>=0.60.0", "react-native@0.71.6":
   "integrity" "sha512-gHrDj7qaAaiE41JwaFCh3AtvOqOLuRgZtHKzNiwxakG/wvPAYmG73ECfWHGxjxIx/QT17Hp37Da3ipCei/CayQ=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.71.6.tgz"
   "version" "0.71.6"
@@ -5873,7 +5873,7 @@
     "react-shallow-renderer" "^16.15.0"
     "scheduler" "^0.23.0"
 
-"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17 || ^18", "react@^18.2.0", "react@>= 16.x.x", "react@18.2.0":
+"react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17 || ^18", "react@^18.2.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

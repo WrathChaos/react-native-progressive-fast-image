@@ -69,7 +69,6 @@ const App = () => {
         source={item}
         thumbnailSource={item}
         onLoad={() => console.log('loaded')}
-        onLoadEnd={() => console.log('load end')}
         onError={() => console.log('error')}
         loadingSource={require('./assets/loading3.gif')}
       />
