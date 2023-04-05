@@ -68,7 +68,6 @@ It accepts every `Image` and `FastImage` props. You can use it like you used to.
 
 # Configuration - Props
 
-useNativeDriver?: boolean;
 
 | Property              |        Type         |  Default  | Description                           |
 | --------------------- | :-----------------: | :-------: | ------------------------------------- |
@@ -83,7 +82,7 @@ useNativeDriver?: boolean;
 
 If you want to set your own component for the loading image, you should set this **style** for the top of the component
 
-```javascript
+```tsc
 {
   top: 0,
   left: 0,
@@ -98,13 +97,19 @@ If you want to set your own component for the loading image, you should set this
 
 ## Customization Props
 
-| Property                   |  Type   | Default | Description                                 |
-| -------------------------- | :-----: | :-----: | ------------------------------------------- |
-| style                      |  style  | default | change or override main image style         |
-| loadingImageStyle          |  style  | default | change or override loading image style      |
-| thumbnailAnimationDuration | number  | default | change the thumbnail animation's duration   |
-| imageAnimationDuration     | number  | default | change the main image animation's duration  |
-| useNativeDriver            | boolean |  true   | change the animations useNativeDriver value |
+
+| Property                   |   Type   | Default | Description                                      |
+|----------------------------|:--------:|:-------:|--------------------------------------------------|
+| style                      |  style   | default | change or override main image style              |
+| loadingImageContainerStyle |  style   | default | change or override loading image container style |
+| loadingImageStyle          |  style   | default | change or override loading image style           |
+| thumbnailImageStyle        |  style   | default | change or override thumbnail image style         |
+| thumbnailAnimationDuration |  number  | default | change the thumbnail animation's duration        |
+| imageAnimationDuration     |  number  | default | change the main image animation's duration       |
+| onLoad                     | function | default | calling the onLoad                               |
+| onThumbnailLoad            | function | default | calling the onThumbnailLoad                      |
+| onLoadEnd                  | function | default | calling the onLoadEnd                            |
+| onError                    | function | default | calling the onError                              |
 
 ## Future Plans
 

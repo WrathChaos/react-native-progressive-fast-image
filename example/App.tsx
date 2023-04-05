@@ -1,7 +1,7 @@
 import React from 'react';
-import {StatusBar, FlatList, Dimensions} from 'react-native';
+import {View, StatusBar, FlatList, Dimensions} from 'react-native';
 import ProgressiveImage from '@freakycoder/react-native-progressive-fast-image';
-const {width: ScreenWidth} = Dimensions.get('window');
+const {width: ScreenWidth} = Dimensions.get('screen');
 console.disableYellowBox = true;
 
 const images = [
@@ -61,29 +61,26 @@ const App = () => {
 
     return (
       <ProgressiveImage
-        key={item}
+        key={index}
         style={{
           width: ScreenWidth / 2,
           height: ScreenWidth / 2,
         }}
         source={item}
         thumbnailSource={item}
-        loadingImageStyle={{
-          width: 50,
-          height: 50,
-          alignSelf: 'center',
-        }}
-        imageAnimationDuration={10000}
+        onLoad={() => console.log('loaded')}
+        onLoadEnd={() => console.log('load end')}
+        onError={() => console.log('error')}
         loadingSource={require('./assets/loading3.gif')}
       />
     );
   };
 
   return (
-    <>
+    <View>
       <StatusBar barStyle="light-content" />
       <FlatList numColumns={2} data={images} renderItem={renderItem} />
-    </>
+    </View>
   );
 };
 

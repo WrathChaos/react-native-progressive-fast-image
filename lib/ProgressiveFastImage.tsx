@@ -2,8 +2,9 @@ import * as React from "react";
 import {
   View,
   Animated,
-  ImageSourcePropType,
   StyleProp,
+  ImageSourcePropType,
+  ViewStyle,
   ImageStyle,
 } from "react-native";
 import FastImage, {
@@ -16,26 +17,24 @@ const AnimatedFastImage = Animated.createAnimatedComponent(FastImage);
  */
 import styles from "./ProgressiveFastImage.style";
 
-export type CustomImageStyleProp =
-  | StyleProp<ImageStyle>
-  | Array<StyleProp<ImageStyle>>;
-
-export type CustomFastImageStyleProps =
-  | StyleProp<FastImageStyle>
-  | Array<StyleProp<FastImageStyle>>;
-
 export interface IProgressiveFastImageProps {
   loadingImageComponent?: React.ReactNode;
   source: Source;
   blurRadius?: number;
-  errorSource?: Source;
-  loadingSource?: ImageSourcePropType;
-  thumbnailSource?: ImageSourcePropType;
-  style?: CustomFastImageStyleProps;
-  loadingImageStyle?: CustomFastImageStyleProps;
+  errorSource?: any;
+  loadingSource?: any;
+  thumbnailSource?: any;
+  style?: StyleProp<FastImageStyle>;
+  thumbnailImageStyle?: StyleProp<ImageStyle>;
+  loadingImageStyle?: StyleProp<FastImageStyle>;
+  loadingImageContainerStyle?: StyleProp<ViewStyle>;
   thumbnailAnimationDuration?: number;
   imageAnimationDuration?: number;
   useNativeDriver?: boolean;
+  onLoad?: () => void;
+  onThumbnailLoad?: () => void;
+  onLoadEnd?: () => void;
+  onError?: () => void;
 }
 
 interface IState {
@@ -72,6 +71,7 @@ class ProgressiveImage extends React.Component<
         useNativeDriver: this.props.useNativeDriver || true,
       }).start();
     });
+    this.props.onThumbnailLoad?.();
   };
 
   onImageLoad = () => {
@@ -81,14 +81,19 @@ class ProgressiveImage extends React.Component<
       duration: this.props.imageAnimationDuration,
       useNativeDriver: this.props.useNativeDriver || true,
     }).start();
+    this.props.onLoad?.();
   };
 
   onLoadEnd = () => {
-    this.setState({ showDefault: false });
+    this.setState({ showDefault: false }, () => {
+      this.props.onLoadEnd?.();
+    });
   };
 
   onError = () => {
-    this.setState({ error: true });
+    this.setState({ error: true }, () => {
+      this.props.onError?.();
+    });
   };
 
   // ? bugfix: FastImage library's `source` null
@@ -109,7 +114,9 @@ class ProgressiveImage extends React.Component<
     if (!loadingSource) {
       return error ? errorSource : this.normalisedSource();
     }
-    if (!errorSource) return this.normalisedSource();
+    if (!errorSource) {
+      return this.normalisedSource();
+    }
     return error
       ? errorSource // ? Error Image
       : this.normalisedSource();
@@ -121,6 +128,8 @@ class ProgressiveImage extends React.Component<
       source,
       loadingSource,
       thumbnailSource,
+      thumbnailImageStyle,
+      loadingImageContainerStyle,
       loadingImageComponent,
       blurRadius = 15,
       loadingImageStyle,
@@ -128,10 +137,12 @@ class ProgressiveImage extends React.Component<
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         {loadingImageComponent ||
           (loadingSource && !this.state.imageLoaded && (
-            <View style={[styles.loadingImageStyle, style]}>
+            <View
+              style={[styles.loadingImageStyle, loadingImageContainerStyle]}
+            >
               <AnimatedFastImage
                 resizeMode="contain"
                 style={[
@@ -146,10 +157,12 @@ class ProgressiveImage extends React.Component<
           blurRadius={blurRadius}
           source={thumbnailSource}
           onLoad={this.onThumbnailLoad}
-          style={[{ opacity: this.animatedThumbnailImage }, style]}
+          style={[
+            { opacity: this.animatedThumbnailImage },
+            thumbnailImageStyle,
+          ]}
         />
         <AnimatedFastImage
-          {...props}
           onError={this.onError}
           onLoad={this.onImageLoad}
           onLoadEnd={this.onLoadEnd}
